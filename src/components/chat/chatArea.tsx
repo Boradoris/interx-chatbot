@@ -26,9 +26,11 @@ export default function ChatArea({ messages }: ChatAreaProps) {
               {msg.text}
             </div>
           ) : (
-            <div className="w-full p-4 rounded-lg  text-gray-800">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
-            </div>
+            msg?.text && (
+              <div className="w-full p-4 rounded-lg  text-gray-800">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+              </div>
+            )
           )}
         </div>
       ))}
