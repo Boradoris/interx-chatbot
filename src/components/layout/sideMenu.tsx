@@ -3,14 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { nanoid } from "nanoid";
 import addIcon from "@/assets/icon-add.svg";
 import Logo from "../ui/logo";
-import { Message } from "@/types/chat";
-
-export interface StoredChat {
-  chatId: string;
-  title: string;
-  messages: Message[];
-  lastUpdated: number;
-}
+import { StoredChat } from "@/types/chat";
 
 const SideMenu = () => {
   const navigate = useNavigate();

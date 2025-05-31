@@ -4,9 +4,8 @@ import { nanoid } from "nanoid";
 import ChatArea from "@/components/chat/chatArea";
 import ChatForm from "@/components/chat/chatForm";
 import ChatError from "@/components/chat/chatError";
-import { Message } from "@/types/chat";
+import { Message, StoredChat } from "@/types/chat";
 import { sendMessage } from "@/api/chat/chatApi";
-import { StoredChat } from "@/components/layout/sideMenu";
 
 const Home = () => {
   const { search } = useLocation();
