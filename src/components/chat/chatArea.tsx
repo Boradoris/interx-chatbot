@@ -1,14 +1,7 @@
-// ChatArea.tsx
-import React, { useEffect, useRef, RefObject } from "react";
+import { Message } from "@/types/chat";
+import { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
-/* Message 인터페이스: sender는 "user" 또는 "bot"만 허용 */
-export interface Message {
-  id: string;
-  text: string;
-  sender: "user" | "bot";
-}
 
 interface ChatAreaProps {
   messages: Message[];

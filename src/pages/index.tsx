@@ -1,7 +1,8 @@
 import { useState, useCallback } from "react";
 import { nanoid } from "nanoid";
-import ChatArea, { Message } from "@/components/chat/chatArea";
+import ChatArea from "@/components/chat/chatArea";
 import ChatForm from "@/components/chat/chatForm";
+import { Message } from "@/types/chat";
 
 const Home = () => {
   const [messages, setMessages] = useState<Message[]>([]);
