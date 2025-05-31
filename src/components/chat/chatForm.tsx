@@ -1,4 +1,4 @@
-import React, { useRef, FormEvent, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, FormEvent } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import sendIcon from "@/assets/icon-send.svg";
 
@@ -11,6 +11,10 @@ interface ChatFormProps {
 
 export default function ChatForm({ input, isStreaming, onInputChange, onSend }: ChatFormProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
 
   const handleSubmit = useCallback(
     (e: FormEvent) => {
