@@ -39,7 +39,7 @@ export default function ChatForm({ input, onInputChange, onSend }: ChatFormProps
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col border border-gray-200 bg-white rounded-xl p-2"
+      className="flex flex-col border border-gray-200 bg-white rounded-xl p-2 hover:cursor-text"
       onClick={() => {
         textareaRef.current?.focus();
       }}
