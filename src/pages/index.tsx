@@ -11,6 +11,7 @@ const Home = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [input, setInput] = useState("");
   const [lastUserText, setLastUserText] = useState("");
+  const [isStreaming, setIsStreaming] = useState(false);
 
   const handleInputChange = useCallback((value: string) => {
     setInput(value);
@@ -40,6 +41,7 @@ const Home = () => {
 
       try {
         await sendMessage(text, (streamId, delta) => {
+          setIsStreaming(true);
           if (firstChunk) {
             /* 첫 번째 스트림 데이터 수신 시 Bot 메시지 추가 */
             setMessages(prev => [
@@ -56,6 +58,8 @@ const Home = () => {
         });
       } catch (e: any) {
         setErrorMessage(e.message ?? "An error occurred");
+      } finally {
+        setIsStreaming(false);
       }
     },
     [input]
@@ -65,7 +69,12 @@ const Home = () => {
     <div className="flex flex-col h-screen w-full max-w-[1100px] p-6 mx-auto">
       <ChatArea messages={messages} />
       {errorMessage && <ChatError message={errorMessage} onRetry={handleRetry} />}
-      <ChatForm input={input} onInputChange={handleInputChange} onSend={onSend} />
+      <ChatForm
+        input={input}
+        onInputChange={handleInputChange}
+        onSend={onSend}
+        isStreaming={isStreaming}
+      />
     </div>
   );
 };

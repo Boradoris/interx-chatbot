@@ -4,11 +4,12 @@ import sendIcon from "@/assets/icon-send.svg";
 
 interface ChatFormProps {
   input: string;
+  isStreaming: boolean;
   onInputChange: (value: string) => void;
   onSend: () => void;
 }
 
-export default function ChatForm({ input, onInputChange, onSend }: ChatFormProps) {
+export default function ChatForm({ input, isStreaming, onInputChange, onSend }: ChatFormProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleSubmit = useCallback(
@@ -28,12 +29,15 @@ export default function ChatForm({ input, onInputChange, onSend }: ChatFormProps
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (isStreaming) {
+        return; // 스트리밍 중에는 키 입력 무시
+      }
       if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault(); // 기본 줄바꿈 방지
+        e.preventDefault(); // 줄바꿈 방지
         onSend();
       }
     },
-    [onSend]
+    [onSend, isStreaming]
   );
 
   return (
@@ -58,7 +62,10 @@ export default function ChatForm({ input, onInputChange, onSend }: ChatFormProps
       <div className="flex justify-end items-center border-t border-none mt-2">
         <button
           type="submit"
-          className="w-8 h-8 rounded-full bg-[#FF8000] text-white flex items-center justify-center shadow hover:bg-orange-500 transition"
+          disabled={isStreaming || input.trim() === ""}
+          className={`w-8 h-8 rounded-full bg-[#FF8000] text-white flex items-center justify-center shadow transition 
+            ${isStreaming || input.trim() === "" ? "opacity-50 cursor-not-allowed" : "hover:bg-orange-500"}
+          `}
         >
           <img src={sendIcon} className="w-5 h-5" />
         </button>
