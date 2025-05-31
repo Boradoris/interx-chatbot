@@ -1,4 +1,3 @@
-// src/components/SideMenu.tsx
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { nanoid } from "nanoid";
@@ -78,7 +77,7 @@ const SideMenu = () => {
         <div className="mt-4 mx-3">
           <h3 className="px-2 py-1 text-xs font-semibold text-gray-600">이전 채팅</h3>
           <hr className="border-gray-200 my-1" />
-          <ul className="max-h-[200px] overflow-y-auto">
+          <ul className="max-h-[500px] overflow-y-auto">
             {sessions.map(({ chatId, title }) => (
               <li key={chatId}>
                 <NavLink

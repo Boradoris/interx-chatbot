@@ -56,10 +56,10 @@ export default function ChatForm({ input, isStreaming, onInputChange, onSend }: 
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="메시지를 입력하세요."
-        className="w-full resize-none focus:outline-none text-sm px-3 bg-transparent border-none overflow-y-auto"
+        className="w-full resize-none focus:outline-none text-sm py-2 px-3 bg-transparent border-none overflow-y-auto"
       />
 
-      <div className="flex justify-end items-center border-t border-none mt-2">
+      <div className="flex justify-end items-center border-t border-none">
         <button
           type="submit"
           disabled={isStreaming || input.trim() === ""}
