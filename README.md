@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# 챗봇 인터페이스 구현
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+제공된 LLM API 키와 LLM 모델을 사용하여 단일 챗봇 대화 UI를 구현
+아래 내용을 참고하여 설치 및 실행하세요.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 설치 및 실행
 
-## Expanding the ESLint configuration
+1. **레포지토리 클론**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+   ```bash
+   git clone https://github.com/Boradoris/interx-chatbot.git
+   cd interx-chatbot
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. **의존성 설치**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   ```bash
+   # yarn 사용 예시
+   yarn install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   # 또는 npm 사용 시
+   # npm install
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+   # 또는 pnpm 사용 시
+   # pnpm install
+   ```
+
+3. **로컬 환경 실행**
+
+   ```bash
+   # Local: http://localhost:3000/
+   yarn dev
+   ```
+
+---
+
+## 사전 요구사항
+
+- **프레임워크**: React (Next.js, CRA 등 자유 선택)
+- **API 연동**: LLM API 활용 (API Key 제공)
+- **상태 관리**: useState, useReducer 또는 상태 관리 라이브러리 자유 선택
+- **스타일링**: CSS Modules, Tailwind, styled-components 등 자유 선택
+- **로컬 저장**: localStorage를 사용하여 챗봇 인스턴스 임시 저장 가능
+- **환경 변수 처리**: `.env` 파일을 사용하여 API 키 외부 노출 금지
+
+---
+
+## 프로젝트 구조
+
+```bash
+project-root/
+... 생략
+└── src/
+    ├── api/
+    ├── assets/
+    ├── components/
+    ├── pages/
+    ├── routes/
+    ├── types/
+    └── utils/
 ```
