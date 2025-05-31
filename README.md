@@ -28,7 +28,22 @@
    # pnpm install
    ```
 
-3. **로컬 환경 실행**
+3. **(중요) .env 파일 추가**
+   프로젝트 root 위치에 .env 파일을 추가해주세요.
+
+   ```bash
+   project-root/
+   ├── .env           # ← 여기에 환경 변수 정의
+   └── src/
+     └── …
+   ```
+
+   **.env 파일 내부에 아래 내용을 추가해주세요.**
+
+   - VITE_CHAT_API_URL=api_url
+   - VITE_CHAT_API_KEY=api_key
+
+4. **로컬 환경 실행**
 
    ```bash
    # Local: http://localhost:3000/
