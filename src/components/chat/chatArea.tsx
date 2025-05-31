@@ -11,8 +11,23 @@ export default function ChatArea({ messages }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 0) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages]);
+
+  if (messages.length === 0) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p className="text-gray-500 text-2xl text-center">
+          지원자 김동건
+          <br />
+          <span className="text-gray-600 font-semibold">INTER</span>
+          <span className="text-[#FF8000] font-semibold">X</span> Front-end 개발자 사전 과제
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 overflow-y-auto mb-4 space-y-2 [&::-webkit-scrollbar]:hidden">
