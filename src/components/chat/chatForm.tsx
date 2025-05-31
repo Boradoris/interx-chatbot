@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useCallback, FormEvent } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import sendIcon from "@/assets/icon-send.svg";
+import { useLocation } from "react-router-dom";
 
 interface ChatFormProps {
   input: string;
@@ -10,11 +11,12 @@ interface ChatFormProps {
 }
 
 export default function ChatForm({ input, isStreaming, onInputChange, onSend }: ChatFormProps) {
+  const { search } = useLocation();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     textareaRef.current?.focus();
-  }, []);
+  }, [search]);
 
   const handleSubmit = useCallback(
     (e: FormEvent) => {
