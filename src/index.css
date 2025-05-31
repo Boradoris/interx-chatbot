@@ -1,0 +1,465 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src:
+    local("Pretendard Black"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Black.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Black.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src:
+    local("Pretendard ExtraBold"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-ExtraBold.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-ExtraBold.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local("Pretendard Bold"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Bold.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Bold.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src:
+    local("Pretendard SemiBold"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-SemiBold.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-SemiBold.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src:
+    local("Pretendard Medium"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Medium.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Medium.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("Pretendard Regular"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Regular.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Regular.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src:
+    local("Pretendard Light"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Light.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Light.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src:
+    local("Pretendard ExtraLight"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-ExtraLight.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-ExtraLight.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src:
+    local("Pretendard Thin"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff2/Pretendard-Thin.woff2")
+      format("woff2"),
+    url("https://static.some.co.kr/fonts/Pretendard-1.3.8/web/static/woff/Pretendard-Thin.woff")
+      format("woff");
+}
+
+:root {
+  font-family: "Pretendard", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --vaiv-primary-500: 216, 91%, 54%;
+
+  /* tailwind util 사용하기 위해 변경 rgb-> hsl */
+  /* #B9D2FF */
+  --primary-lighter: 219 100% 86%;
+  /* #6FA3FF */
+  --primary-light: 218 100% 72%;
+  /* #2175F4 */
+  --primary-main: 216 91% 54%;
+  /* #004BC0 */
+  --primary-dark: 217 100% 38%;
+  /* #0645A8 */
+  --primary-darker: 217 93% 34%;
+  /* #fff */
+  --primary-contrastText: 0 0% 100%;
+
+  /* #AAFFE3 */
+  --secondary-lighter: 160 100% 83%;
+  /* #62F5C5 */
+  --secondary-light: 160 88% 67%;
+  /* #19C194 */
+  --secondary-main: 164 77% 43%;
+  /* #009066 */
+  --secondary-dark: 163 100% 28%;
+  /* #037655 */
+  --secondary-darker: 163 95% 24%;
+  /* #fff */
+  --secondary-contrastText: 0 0% 100%;
+
+  /* #AAE0FF */
+  --success-lighter: 202 100% 83%;
+  /* #40BAFF */
+  --success-light: 202 100% 63%;
+  /* #03A4FF */
+  --success-main: 202 100% 51%;
+  /* #0383E0 */
+  --success-dark: 205 97% 45%;
+  /* #0366C1 */
+  --success-darker: 209 97% 38%;
+  /* #fff */
+  --success-contrastText: 0 0% 100%;
+
+  /* #FCDEFF */
+  --info-lighter: 295 100% 94%;
+  /* #FAC0FF */
+  --info-light: 295 100% 88%;
+  /* #C68FFF */
+  --info-main: 269 100% 78%;
+  /* #9360CB */
+  --info-dark: 269 51% 59%;
+  /* #783FB8 */
+  --info-darker: 268 49% 48%;
+  /* #fff */
+  --info-contrastText: 0 0% 100%;
+
+  /* #FFE0BE */
+  --warning-lighter: 31 100% 87%;
+  /* #FFC88B */
+  --warning-light: 32 100% 77%;
+  /* #FF975C */
+  --warning-main: 22 100% 68%;
+  /* #C76830 */
+  --warning-dark: 22 61% 48%;
+  /* #A74B15 */
+  --warning-darker: 22 78% 37%;
+  /* #fff */
+  --warning-contrastText: 0 0% 100%;
+
+  /* #FFD6D5 */
+  --error-lighter: 1 100% 92%;
+  /* #FF9D9A */
+  --error-light: 2 100% 80%;
+  /* #FF6B6C */
+  --error-main: 360 100% 71%;
+  /* #C73841 */
+  --error-dark: 356 56% 50%;
+  /* #9B232A */
+  --error-darker: 357 63% 37%;
+  /* #fff */
+  --error-contrastText: 0 0% 100%;
+
+  /* mui theme color grey */
+  /* #FFFFFF */
+  --grey-0: 0 0% 100%;
+  /* #F9FAFB */
+  --grey-100: 210 20% 98%;
+  /* #F4F6F8 */
+  --grey-200: 210 22% 96%;
+  /* #DFE3E8 */
+  --grey-300: 213 16% 89%;
+  /* #C4CDD5 */
+  --grey-400: 208 17% 80%;
+  /* #919EAB */
+  --grey-500: 210 13% 62%;
+  /* #637381 */
+  --grey-600: 208 13% 45%;
+  /* #454F5B */
+  --grey-700: 213 14% 31%;
+  /* #212B36 */
+  --grey-800: 211 24% 17%;
+  /* #161C24 */
+  --grey-900: 214 24% 11%;
+
+  /* tailwind theme color */
+  /* #FBFBFB */
+  --gray-50: 0 0% 98%;
+  /* #F1F1F1 */
+  --gray-100: 0 0% 95%;
+  /* #E9EBED */
+  --gray-200: 210 10% 92%;
+  /* #D1D5DB */
+  --gray-300: 216 12% 84%;
+  /* #9BA7B6 */
+  --gray-400: 213 16% 66%;
+  /* #7D8998 */
+  --gray-500: 213 12% 54%;
+  /* #414D5C */
+  --gray-600: 213 17% 31%;
+  /* #333B46 */
+  --gray-700: 215 16% 24%;
+  /* #191919 */
+  --gray-800: 0 0% 10%;
+  /* #111827 */
+  --gray-900: 221 39% 11%;
+
+  /* #F3F7FF */
+  --blue-50: #f3f7ff;
+  /* #E5EEFF */
+  --blue-100: #e5eeff;
+  /* #B9D2FF */
+  --blue-200: #b9d2ff;
+  /* #6FA3FF */
+  --blue-300: #6fa3ff;
+  /* #448AFF */
+  --blue-400: #448aff;
+  /* #2175F4 */
+  --blue-500: #2175f4;
+  /* #134BE5 */
+  --blue-600: #134be5;
+  /* #11289F */
+  --blue-700: #11289f;
+  /* #0F1B59 */
+  --blue-800: #0f1b59;
+  /* #1E3A8A */
+  --blue-900: #1e3a8a;
+
+  --header: #fff;
+  --header-scroll: rgba(255, 255, 255, 0.8);
+
+  /* #fff */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+
+  --radius: 0.5rem;
+
+  --text-primary: #212b36;
+  --text-secondary: #637381;
+  --text-disabled: #919eab;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  min-height: 100%;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  scrollbar-width: 12px;
+  scrollbar-color: var(--gray-200) transparent;
+}
+
+.rdp-button {
+  border: 0;
+}
+
+::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  background-color: #d1d5db;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
