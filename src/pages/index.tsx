@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import ChatArea from "@/components/chat/chatArea";
 import ChatForm from "@/components/chat/chatForm";
+import ChatError from "@/components/chat/chatError";
 import { Message } from "@/types/chat";
 import { sendMessage } from "@/api/chat/chatApi";
-import ChatError from "@/components/chat/chatError";
 
 const Home = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -31,11 +31,9 @@ const Home = () => {
       setInput("");
       setErrorMessage("");
 
-      let botId = "";
       let firstChunk = true;
 
       if (!isRetry) {
-        // 최초 전송: 사용자 메시지 추가
         const userMsg: Message = { id: nanoid(), text, sender: "user" };
         setMessages(prev => [...prev, userMsg]);
       }
@@ -43,15 +41,16 @@ const Home = () => {
       try {
         await sendMessage(text, (streamId, delta) => {
           if (firstChunk) {
-            // 첫 델타: bot 메시지 추가
-            botId = streamId;
-            const botMsg: Message = { id: botId, text: delta, sender: "bot" };
-            setMessages(prev => [...prev, botMsg]);
+            /* 첫 번째 스트림 데이터 수신 시 Bot 메시지 추가 */
+            setMessages(prev => [
+              ...prev,
+              { id: streamId, text: delta ?? "", sender: "bot", isLoading: false },
+            ]);
             firstChunk = false;
           } else if (delta) {
-            // 이후 델타: 이어붙이기
+            /* 이후 델타 수신 시 기존 Bot 메시지 업데이트 */
             setMessages(prev =>
-              prev.map(msg => (msg.id === botId ? { ...msg, text: msg.text + delta } : msg))
+              prev.map(msg => (msg.id === streamId ? { ...msg, text: msg.text + delta } : msg))
             );
           }
         });

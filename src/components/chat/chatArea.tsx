@@ -15,7 +15,7 @@ export default function ChatArea({ messages }: ChatAreaProps) {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto mb-4 space-y-2 overflow-scroll [&::-webkit-scrollbar]:hidden">
+    <div className="flex-1 overflow-y-auto mb-4 space-y-2 [&::-webkit-scrollbar]:hidden">
       {messages.map(msg => (
         <div
           key={msg.id}
@@ -25,10 +25,16 @@ export default function ChatArea({ messages }: ChatAreaProps) {
             <div className="max-w-xs p-2 rounded-lg bg-[#FF8000] text-white whitespace-pre-wrap">
               {msg.text}
             </div>
+          ) : msg.isLoading ? (
+            <div className="w-full py-4">
+              <div className="h-14 p-4 rounded-lg bg-gray-100 animate-pulse"></div>
+            </div>
           ) : (
-            msg?.text && (
-              <div className="w-full p-4 rounded-lg  text-gray-800">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+            msg.text && (
+              <div className="w-full py-4">
+                <div className="p-4 rounded-lg bg-gray-100 text-gray-800 whitespace-pre-wrap">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                </div>
               </div>
             )
           )}
