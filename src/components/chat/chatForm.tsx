@@ -40,6 +40,9 @@ export default function ChatForm({ input, onInputChange, onSend }: ChatFormProps
     <form
       onSubmit={handleSubmit}
       className="flex flex-col border border-gray-200 bg-white rounded-xl p-2"
+      onClick={() => {
+        textareaRef.current?.focus();
+      }}
     >
       <TextareaAutosize
         ref={textareaRef}
